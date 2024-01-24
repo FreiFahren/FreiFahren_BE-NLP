@@ -15,6 +15,7 @@ class TicketInspector:
 
 ubahn_lines = ['U1', 'U2', 'U3', 'U4', 'U5', 'U6', 'U7', 'U8', 'U9']
 sbahn_lines = ['S1', 'S2', 'S3', 'S5', 'S7', 'S8' 'S9', 'S25', 'S26', 'S41', 'S42', 'S45', 'S46', 'S75', 'S47', 'S85']
+tram_lines = ['M1', 'M2', 'M4', 'M5', 'M6', 'M8', 'M10', 'M13', 'M17']
 
 def find_line(text, lines):
     # remove all whitespaces from the text
@@ -96,7 +97,7 @@ if __name__ == "__main__":
     @bot.message_handler(func=lambda msg: True)
     def get_info(message):
         text = message.text
-        found_line = find_line(text, ubahn_lines + sbahn_lines)
+        found_line = find_line(text, ubahn_lines + sbahn_lines + tram_lines)
         result = find_direction(text)
         found_direction = result[0]
         text_without_direction = result[1]
