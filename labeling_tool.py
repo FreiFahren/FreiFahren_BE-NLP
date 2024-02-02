@@ -1,14 +1,24 @@
 import json
 import pickle
 import os
-import random
-import string
+
+# The purpose of this script is to label the data in messages_and_times.json / RAW_DATA_PATH
+# Run in console and follow the prompts. If you quit, the data will be saved in labeled_data/ as a pickle file.
+#
+# To load the data, use the following code:
+# import pickle
+# with open(f'labeled_data/{filename}.py', 'rb') as f:
+#     loaded_data = pickle.load(f)
+#
+# TODO: Add a way to load the data and continue labeling, so we don't start from at the beginning every time.
 
 data = []
+
 RAW_DATA_PATH = 'messages_and_times.json'
 
 with open(RAW_DATA_PATH, 'r') as f:
     messages = json.load(f)
+
 
 # Iteration through messages
 for message in messages:
@@ -40,19 +50,15 @@ for message in messages:
 
     data.append((message['message'], current_station, line, direction))
 
-# Generate a random filename
-filename = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
-
 # Ensure the directory exists
 os.makedirs('labeled_data', exist_ok=True)
 
+# Check if there is any existing labeled data
+existing_files = os.listdir('labeled_data')
+
 # Save the data
+filename = 'labeled_data.py'
 
-with open(os.path.join('labeled_data', filename + '.py'), 'wb') as f:
-    pickle.dump(data, f)
-
-#  Load the data:
-#
-#  import pickle
-#  with open(f'labeled_data/{filename}.py', 'rb') as f:
-#      loaded_data = pickle.load(f)
+with open(os.path.join('labeled_data', filename), 'ab') as f:
+    pickle.dump((data), f)
+print('Data saved to labeled_data/' + filename)
