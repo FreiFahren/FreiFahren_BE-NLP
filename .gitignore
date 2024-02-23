@@ -7,3 +7,16 @@ NER/__pycache__
 .vscode/settings.json
 *.pyc
 *.pyc
+NER/models/model-nodirection/config.cfg
+NER/models/model-nodirection/meta.json
+NER/models/model-nodirection/ner/cfg
+NER/models/model-nodirection/ner/model
+NER/models/model-nodirection/ner/moves
+NER/models/model-nodirection/tok2vec/cfg
+NER/models/model-nodirection/tok2vec/model
+NER/models/model-nodirection/tokenizer
+NER/models/model-nodirection/vocab/key2row
+NER/models/model-nodirection/vocab/lookups.bin
+NER/models/model-nodirection/vocab/strings.json
+NER/models/model-nodirection/vocab/vectors
+NER/models/model-nodirection/vocab/vectors.cfg

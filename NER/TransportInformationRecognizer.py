@@ -30,15 +30,15 @@ class TransportInformationRecognizer:
     # return: a text message with only the recognized stations
     def process_text(self, text: str) -> str:
 
-        doc = self.nlp(text)
+        doc = self.nlp(text.lower())
         entities = []
         words = []
 
         for entity in doc.ents:
             if entity.label_ == 'STATION':
-                entities.append(entity)
+                entities.append(entity)  
                 words.append(entity.text)
-
+               
         new_doc = Doc(self.nlp.vocab, words=words, ents=entities)
         return new_doc.text
     
